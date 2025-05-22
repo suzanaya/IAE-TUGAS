@@ -1,5 +1,6 @@
 import sqlite3
 
+
 DATABASE_NAME = "starwars.db"
 
 def get_db_connection():

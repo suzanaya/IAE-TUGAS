@@ -8,13 +8,25 @@ type Query {
 }
 
 type Mutation {
+  # Planet Mutations
   createPlanet(input: CreatePlanetInput!): Planet
   updatePlanet(input: UpdatePlanetInput!): Planet
   deletePlanet(id: ID!): Boolean
+
+  # Character Mutations
   createCharacter(input: CreateCharacterInput!): Character
+  updateCharacter(input: UpdateCharacterInput!): Character
+  deleteCharacter(id: ID!): Boolean
+
+  # Starship Mutations
+  updateStarship(input: UpdateStarshipInput!): Starship
+  deleteStarship(id: ID!): Boolean
+
+  # Relationship Mutation
   assignStarship(input: AssignStarshipInput!): Character
 }
 
+# Input Types
 input CreatePlanetInput {
   name: String!
   climate: String
@@ -34,11 +46,26 @@ input CreateCharacterInput {
   homePlanetId: Int
 }
 
+input UpdateCharacterInput {
+  id: ID!
+  name: String
+  species: String
+  homePlanetId: Int
+}
+
+input UpdateStarshipInput {
+  id: ID!
+  name: String
+  model: String
+  manufacturer: String
+}
+
 input AssignStarshipInput {
   characterId: ID!
   starshipId: ID!
 }
 
+# Object Types
 type Character {
   id: ID!
   name: String!
